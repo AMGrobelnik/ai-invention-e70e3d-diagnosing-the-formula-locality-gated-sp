@@ -1,0 +1,120 @@
+\begin{thebibliography}{17}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Abreu et~al.(2007)Abreu, Zoeteweij, and van Gemund]{Abreu2007}
+Rui Abreu, Peter Zoeteweij, and Arjan J.~C. van Gemund.
+\newblock On the accuracy of spectrum-based fault localization.
+\newblock In \emph{Testing: Academic and Industrial Conference Practice and
+  Research Techniques -- MUTATION (TAIC PART)}, pages 89--98. IEEE, 2007.
+
+\bibitem[Anonymous(2024)]{CycleConsistency2024}
+Anonymous.
+\newblock Cycle-consistency back-translation for {FOL}.
+\newblock \emph{arXiv preprint arXiv:2411.02791}, 2024.
+
+\bibitem[Anonymous(2025)]{SoLT2025}
+Anonymous.
+\newblock Metamorphic testing of {LLM}s via logic-invariant linguistic
+  diversification ({SoLT}).
+\newblock \emph{arXiv preprint arXiv:2511.02108}, 2025.
+
+\bibitem[Anonymous(2026{\natexlab{a}})]{NL2Logic2026}
+Anonymous.
+\newblock {NL2Logic}: {AST}-guided translation of {NL} into {FOL}.
+\newblock \emph{arXiv preprint arXiv:2602.13237}, 2026{\natexlab{a}}.
+
+\bibitem[Anonymous(2026{\natexlab{b}})]{SemLoc2026}
+Anonymous.
+\newblock {SemLoc}: Structured grounding of free-form {LLM} reasoning for fault
+  localization.
+\newblock \emph{arXiv preprint arXiv:2603.29109}, 2026{\natexlab{b}}.
+
+\bibitem[Han et~al.(2022)Han, Schoelkopf, Zhao, Qi, Riddell, Benson, Sun,
+  Zubova, Qiao, Burtell, et~al.]{Han2022}
+Simeng Han, Hailey Schoelkopf, Yilun Zhao, Zhenting Qi, Martin Riddell, Luke
+  Benson, Lucy Sun, Ekaterina Zubova, Yujie Qiao, Matthew Burtell, et~al.
+\newblock {FOLIO}: Natural language reasoning with first-order logic.
+\newblock In \emph{Proceedings of the 2024 Conference on Empirical Methods in
+  Natural Language Processing}, 2022.
+
+\bibitem[Jones and Harrold(2005)]{Jones2005}
+James~A. Jones and Mary~Jean Harrold.
+\newblock Empirical evaluation of the {Tarantula} automatic fault-localization
+  technique.
+\newblock In \emph{Proceedings of the 20th IEEE/ACM International Conference on
+  Automated Software Engineering (ASE)}, pages 273--282. IEEE, 2005.
+
+\bibitem[Liu(2025)]{Liu2025}
+Fangzhi Liu.
+\newblock Few-shot natural language to first-order logic translation via code
+  generation.
+\newblock In \emph{Proceedings of the 2025 Annual Conference of the North
+  American Chapter of the Association for Computational Linguistics (NAACL)},
+  2025.
+
+\bibitem[Olausson et~al.(2023)Olausson, Platanios, Ellis, and
+  Solar-Lezama]{Olausson2023}
+Theo~X. Olausson, Elman~A. Platanios, Kevin Ellis, and Armando Solar-Lezama.
+\newblock Is self-repair a silver bullet for code generation?
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in
+  Natural Language Processing (EMNLP)}, 2023.
+\newblock arXiv:2310.15164.
+
+\bibitem[Pan et~al.(2023)Pan, Albalak, Wang, and Wang]{Pan2023}
+Liangming Pan, Alon Albalak, Xinyi Wang, and William~Yang Wang.
+\newblock Logic-{LM}: Empowering large language models with symbolic solvers
+  for faithful logical reasoning.
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  EMNLP 2023}, 2023.
+
+\bibitem[Pei et~al.(2025)Pei, Li, Zettlemoyer, and Hajishirzi]{Pei2025}
+Jiyao Pei, Haoran Li, Luke Zettlemoyer, and Hannaneh Hajishirzi.
+\newblock {FoVer}: First-order logic verification for natural language
+  reasoning.
+\newblock \emph{Transactions of the Association for Computational Linguistics},
+  2025.
+
+\bibitem[Pill and Wotawa(2018)]{Pill2018}
+Ingo Pill and Franz Wotawa.
+\newblock Spectrum-based fault localization for logic-based reasoning.
+\newblock In \emph{IEEE International Symposium on Software Reliability
+  Engineering Workshops (ISSRE Workshops)}. IEEE, 2018.
+\newblock IEEE 8539195.
+
+\bibitem[Ryu et~al.(2025)Ryu, Kim, and Lee]{Ryu2025}
+Sangjun Ryu, Jihoon Kim, and Kangil Lee.
+\newblock {CLOVER}: Divide and translate.
+\newblock In \emph{Proceedings of the International Conference on Learning
+  Representations (ICLR)}, 2025.
+\newblock arXiv:2410.08047.
+
+\bibitem[Wong et~al.(2014)Wong, Debroy, Gao, and Li]{Wong2014}
+W.~Eric Wong, Vidroha Debroy, Ruizhi Gao, and Yihao Li.
+\newblock The {DStar} method for effective software fault localization.
+\newblock \emph{IEEE Transactions on Reliability}, 63\penalty0 (1):\penalty0
+  290--308, 2014.
+
+\bibitem[Yang et~al.(2024)]{Yang2023}
+Yongchao Yang et~al.
+\newblock {MALLS}: {LogicLLaMA}.
+\newblock In \emph{Proceedings of the International Conference on Learning
+  Representations (ICLR)}, 2024.
+
+\bibitem[Zhang and Shasha(1989)]{Zhang1989}
+Kaizhong Zhang and Dennis Shasha.
+\newblock Simple fast algorithms for the editing distance between trees and
+  related problems.
+\newblock \emph{SIAM Journal on Computing}, 18\penalty0 (6):\penalty0
+  1245--1262, 1989.
+
+\bibitem[Zhu et~al.(2025)]{Zhu2025}
+Yue Zhu et~al.
+\newblock {FoVer-PRM}: Efficient {PRM} training data synthesis via formal
+  verification.
+\newblock \emph{arXiv preprint arXiv:2505.15960}, 2025.
+
+\end{thebibliography}

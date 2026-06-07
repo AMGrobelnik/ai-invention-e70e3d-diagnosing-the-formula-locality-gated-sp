@@ -1,0 +1,99 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{Olausson2023}
+\citation{Pan2023}
+\citation{Ryu2025}
+\citation{Liu2025}
+\citation{Pan2023}
+\citation{Olausson2023}
+\citation{Pan2023}
+\citation{Ryu2025}
+\citation{Pei2025}
+\citation{Jones2005}
+\citation{Abreu2007}
+\citation{Wong2014}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\citation{Jones2005,Abreu2007}
+\citation{Jones2005,Abreu2007,Wong2014}
+\citation{Pill2018}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Background and Related Work}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Spectrum-Based Fault Localization}{2}{subsection.2.1}\protected@file@percent }
+\citation{SemLoc2026}
+\citation{Liu2025}
+\citation{NL2Logic2026}
+\citation{Pei2025}
+\citation{Zhu2025}
+\citation{Olausson2023}
+\citation{Ryu2025}
+\citation{SoLT2025}
+\citation{CycleConsistency2024}
+\citation{Han2022}
+\citation{Yang2023}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The six-phase SBFL-for-FOL pipeline. Phase 0 (locality pilot) gates the entire pipeline; Phases 1--5 proceed only on the local subset. The probe $\times $ component coverage matrix is the central data structure; Ochiai suspiciousness scores rank components for targeted repair.}}{3}{figure.1}\protected@file@percent }
+\newlabel{fig:pipeline}{{1}{3}{The six-phase SBFL-for-FOL pipeline. Phase 0 (locality pilot) gates the entire pipeline; Phases 1--5 proceed only on the local subset. The probe $\times $ component coverage matrix is the central data structure; Ochiai suspiciousness scores rank components for targeted repair}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}NL-to-FOL Translation}{3}{subsection.2.2}\protected@file@percent }
+\citation{Han2022}
+\citation{Zhang1989}
+\citation{Liu2025}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Oracle-Free Testing}{4}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Method}{4}{section.3}\protected@file@percent }
+\newlabel{sec:method}{{3}{4}{Method}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Phase 0: Locality Pilot}{4}{subsection.3.1}\protected@file@percent }
+\newlabel{sec:phase0}{{3.1}{4}{Phase 0: Locality Pilot}{subsection.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Phase 1: Translation with Alignment}{4}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Phase 2: Mixed Probe Bank}{4}{subsection.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Distribution of faulty-component counts per wrong formula across 114 wrong translations on FOLIO. Only 28.9\% of wrong formulas are local ($\leq $2 faulty components), failing the pre-registered 70\% gate. The modal error count is 4 components (21.9\% of formulas), indicating that LLM mistranslations are predominantly diffuse.}}{5}{figure.2}\protected@file@percent }
+\newlabel{fig:locality}{{2}{5}{Distribution of faulty-component counts per wrong formula across 114 wrong translations on FOLIO. Only 28.9\% of wrong formulas are local ($\leq $2 faulty components), failing the pre-registered 70\% gate. The modal error count is 4 components (21.9\% of formulas), indicating that LLM mistranslations are predominantly diffuse}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Phase 3: Decidable Evaluation}{5}{subsection.3.4}\protected@file@percent }
+\newlabel{sec:phase3}{{3.4}{5}{Phase 3: Decidable Evaluation}{subsection.3.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Phase 4: Spectrum and Ranking}{5}{subsection.3.5}\protected@file@percent }
+\citation{Han2022}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Phase 5: Targeted Repair}{6}{subsection.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Experiments}{6}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Setup}{6}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Main Results: Locality Distribution (Phase 0)}{6}{subsection.4.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Distribution of faulty-component counts across 114 wrong formulas. Only 28.9\% are local ($\leq $2 faulty components).}}{6}{table.1}\protected@file@percent }
+\newlabel{tab:locality}{{1}{6}{Distribution of faulty-component counts across 114 wrong formulas. Only 28.9\% are local ($\leq $2 faulty components)}{table.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Top-1 and Top-3 component-localization accuracy and wasted effort for Ochiai, Tarantula, DStar, and random baseline on the 33-sentence local subset. All three SBFL formulas achieve 96.8\% Top-1 accuracy, compared to 39.2\% for random. Wasted effort (fraction of components ranked above the true fault site) is 0.008 for SBFL vs. 0.500 for random.}}{7}{figure.3}\protected@file@percent }
+\newlabel{fig:sbfl}{{3}{7}{Top-1 and Top-3 component-localization accuracy and wasted effort for Ochiai, Tarantula, DStar, and random baseline on the 33-sentence local subset. All three SBFL formulas achieve 96.8\% Top-1 accuracy, compared to 39.2\% for random. Wasted effort (fraction of components ranked above the true fault site) is 0.008 for SBFL vs. 0.500 for random}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Main Results: SBFL on the Local Subset}{7}{subsection.4.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Component-localization accuracy and wasted effort on the 33-sentence local subset. All SBFL formulas achieve 96.8\% Top-1 accuracy versus 39.2\% for random. Wasted effort: 0.008 versus 0.500.}}{7}{table.2}\protected@file@percent }
+\newlabel{tab:sbfl}{{2}{7}{Component-localization accuracy and wasted effort on the 33-sentence local subset. All SBFL formulas achieve 96.8\% Top-1 accuracy versus 39.2\% for random. Wasted effort: 0.008 versus 0.500}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Ablations}{7}{subsection.4.4}\protected@file@percent }
+\newlabel{sec:ablations}{{4.4}{7}{Ablations}{subsection.4.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}Probe-Count Curve}{7}{subsubsection.4.4.1}\protected@file@percent }
+\citation{Jones2005,Abreu2007,Wong2014}
+\citation{Olausson2023,Ryu2025,Pei2025}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Left: Top-1 localization accuracy vs.\ number of probes $k$ (5, 10, 20) for mixed (Ochiai), prover-only, and analytical-only probe banks. Accuracy is stable at 96.8\% across all $k$ values. Right: Top-1 accuracy vs.\ alignment-noise injection level (0\%, 10\%, 20\% of coverage-matrix entries corrupted). Accuracy remains at 96.8\% up to 20\% noise, indicating robustness to moderate alignment errors.}}{8}{figure.4}\protected@file@percent }
+\newlabel{fig:ablations}{{4}{8}{Left: Top-1 localization accuracy vs.\ number of probes $k$ (5, 10, 20) for mixed (Ochiai), prover-only, and analytical-only probe banks. Accuracy is stable at 96.8\% across all $k$ values. Right: Top-1 accuracy vs.\ alignment-noise injection level (0\%, 10\%, 20\% of coverage-matrix entries corrupted). Accuracy remains at 96.8\% up to 20\% noise, indicating robustness to moderate alignment errors}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}Alignment-Noise Injection}{8}{subsubsection.4.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.3}Suspiciousness Formula Comparison}{8}{subsubsection.4.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Phase 5: Targeted vs. Blind Repair}{8}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{9}{section.5}\protected@file@percent }
+\newlabel{sec:discussion}{{5}{9}{Discussion}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}The Diffuse-Error Regime}{9}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Why Targeted Repair Underperforms}{9}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Limitations}{9}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{9}{section.6}\protected@file@percent }
+\bibdata{references}
+\bibcite{Abreu2007}{{1}{2007}{{Abreu et~al.}}{{Abreu, Zoeteweij, and van Gemund}}}
+\bibcite{CycleConsistency2024}{{2}{2024}{{Anonymous}}{{}}}
+\bibcite{SoLT2025}{{3}{2025}{{Anonymous}}{{}}}
+\bibcite{NL2Logic2026}{{4}{2026{a}}{{Anonymous}}{{}}}
+\bibcite{SemLoc2026}{{5}{2026{b}}{{Anonymous}}{{}}}
+\bibcite{Han2022}{{6}{2022}{{Han et~al.}}{{Han, Schoelkopf, Zhao, Qi, Riddell, Benson, Sun, Zubova, Qiao, Burtell, et~al.}}}
+\bibcite{Jones2005}{{7}{2005}{{Jones and Harrold}}{{}}}
+\bibcite{Liu2025}{{8}{2025}{{Liu}}{{}}}
+\bibcite{Olausson2023}{{9}{2023}{{Olausson et~al.}}{{Olausson, Platanios, Ellis, and Solar-Lezama}}}
+\bibcite{Pan2023}{{10}{2023}{{Pan et~al.}}{{Pan, Albalak, Wang, and Wang}}}
+\bibcite{Pei2025}{{11}{2025}{{Pei et~al.}}{{Pei, Li, Zettlemoyer, and Hajishirzi}}}
+\bibcite{Pill2018}{{12}{2018}{{Pill and Wotawa}}{{}}}
+\bibcite{Ryu2025}{{13}{2025}{{Ryu et~al.}}{{Ryu, Kim, and Lee}}}
+\bibcite{Wong2014}{{14}{2014}{{Wong et~al.}}{{Wong, Debroy, Gao, and Li}}}
+\bibcite{Yang2023}{{15}{2024}{{Yang et~al.}}{{}}}
+\bibcite{Zhang1989}{{16}{1989}{{Zhang and Shasha}}{{}}}
+\bibcite{Zhu2025}{{17}{2025}{{Zhu et~al.}}{{}}}
+\bibstyle{plainnat}
+\gdef \@abspage@last{11}

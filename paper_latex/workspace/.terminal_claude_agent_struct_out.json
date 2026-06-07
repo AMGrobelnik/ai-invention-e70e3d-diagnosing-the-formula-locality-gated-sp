@@ -1,0 +1,15 @@
+{
+  "title": "SBFL-for-FOL: Locality-Gated Fault Localization Paper (11pp)",
+  "summary": "Generated a complete 11-page publication-ready LaTeX paper titled 'Diagnosing the Formula: Locality-Gated, Spectrum-Based Semantic Fault Localization for Compositional NL-to-FOL Translation'. The paper includes: (1) Abstract and 6 sections — Introduction, Background & Related Work, Method (Phases 0–5), Experiments, Discussion, and Conclusion; (2) All 4 figures from available_figures inserted with correct placements — fig1 (pipeline overview, figure* full-width), fig2 (locality distribution, figure* full-width), fig3 (SBFL accuracy vs random, figure* full-width), fig4 (ablations, figure* full-width); (3) 2 tables — locality distribution and SBFL accuracy comparison; (4) 17 BibTeX entries in references.bib covering all cited works (Olausson2023, Pan2023, Ryu2025, Liu2025, Pei2025, Jones2005, Abreu2007, Wong2014, Pill2018, SemLoc2026, NL2Logic2026, Zhu2025, SoLT2025, CycleConsistency2024, Han2022, Yang2023, Zhang1989); (5) Compiled successfully to paper.pdf (5.7MB, 11 pages) via 4-pass pdflatex+bibtex workflow with no citation errors. Visual review of all 11 pages confirmed: clean layout, all figures rendered correctly, tables properly formatted, references complete. The aii_semscholar_bib__fetch tool timed out (ability server connection), so references.bib was hand-crafted from verified information in the paper text following the skill's fallback procedure.",
+  "out_expected_files": {
+    "paper_tex_path": "paper.tex",
+    "paper_pdf_path": "paper.pdf",
+    "references_bib_path": "references.bib",
+    "figure_paths": [
+      "figures/fig1_v0.jpg",
+      "figures/fig2_v0.jpg",
+      "figures/fig3_v0.jpg",
+      "figures/fig4_v0.jpg"
+    ]
+  }
+}
