@@ -1,0 +1,157 @@
+{
+  "metadata": {
+    "method_name": "SBFL-for-FOL",
+    "description": "Spectrum-Based Fault Localization for NL→FOL Translation",
+    "locality_distribution": {
+      "3": 19,
+      "99": 20,
+      "7": 1,
+      "6": 5,
+      "1": 10,
+      "5": 5,
+      "4": 25,
+      "2": 21,
+      "9": 2,
+      "8": 4,
+      "0": 2
+    },
+    "locality_fraction": 0.2894736842105263,
+    "locality_gate_passed": false,
+    "alignment_accuracy": 1.0,
+    "probe_verdict_rate": {
+      "overall": 0.9887005649717514,
+      "by_type": {
+        "analytical": 1.0,
+        "z3": 0.9555555555555556
+      }
+    },
+    "localization_results": {
+      "local_subset_size": 33,
+      "ochiai": {
+        "top1": 0.967741935483871,
+        "top3": 1.0,
+        "wasted_effort": 0.008064516129032258
+      },
+      "tarantula": {
+        "top1": 0.967741935483871,
+        "top3": 1.0,
+        "wasted_effort": 0.008064516129032258
+      },
+      "dstar": {
+        "top1": 0.967741935483871,
+        "top3": 1.0,
+        "wasted_effort": 0.008064516129032258
+      },
+      "baseline_random": {
+        "top1": 0.39247311827956993,
+        "top3": 0.9354838709677419,
+        "wasted_effort": 0.5
+      }
+    },
+    "repair_accuracy": {
+      "targeted": {
+        "exact_match": 0.0,
+        "z3_equiv": 0.03333333333333333,
+        "lm_calls": 60
+      },
+      "blind_regen": {
+        "exact_match": 0.0,
+        "z3_equiv": 0.06666666666666667,
+        "lm_calls": 90
+      },
+      "efficiency_ratio": 0.5000000074999998
+    },
+    "ablation_curves": {
+      "probe_count": [
+        {
+          "k": 5,
+          "ochiai_top1": 0.967741935483871,
+          "mixed_top1": 0.967741935483871,
+          "prover_only_top1": 0.967741935483871,
+          "analytical_only_top1": 0.967741935483871
+        },
+        {
+          "k": 10,
+          "ochiai_top1": 0.967741935483871,
+          "mixed_top1": 0.967741935483871,
+          "prover_only_top1": 0.967741935483871,
+          "analytical_only_top1": 0.967741935483871
+        },
+        {
+          "k": 20,
+          "ochiai_top1": 0.967741935483871,
+          "mixed_top1": 0.967741935483871,
+          "prover_only_top1": 0.967741935483871,
+          "analytical_only_top1": 0.967741935483871
+        }
+      ],
+      "alignment_noise": [
+        {
+          "noise_pct": 0,
+          "ochiai_top1": 0.967741935483871
+        },
+        {
+          "noise_pct": 10,
+          "ochiai_top1": 0.967741935483871
+        },
+        {
+          "noise_pct": 20,
+          "ochiai_top1": 0.967741935483871
+        },
+        {
+          "noise_pct": 30,
+          "ochiai_top1": 0.967741935483871
+        },
+        {
+          "noise_pct": 40,
+          "ochiai_top1": 0.967741935483871
+        }
+      ],
+      "formula_comparison": {
+        "ochiai_top1": 0.967741935483871,
+        "tarantula_top1": 0.967741935483871,
+        "dstar_top1": 0.967741935483871
+      }
+    },
+    "cost_total": 0.011589150000000003,
+    "n_sentences_processed": 120,
+    "elapsed_seconds": 29.224865198135376
+  },
+  "datasets": [
+    {
+      "dataset": "folio",
+      "examples": [
+        {
+          "input": "All people who regularly drink coffee are dependent on caffeine.",
+          "output": "∀x (DrinkRegularly(x, coffee) → IsDependentOn(x, caffeine))",
+          "predict_our_method": "∀x(Person(x) ∧ RegularlyDrinksCoffee(x) → DependentOnCaffeine(x))",
+          "predict_baseline": "∀x(Person(x) ∧ RegularlyDrinksCoffee(x) → DependentOnCaffeine(x))",
+          "metadata_phase": "phase0",
+          "metadata_is_wrong": true,
+          "metadata_n_faulty": 3,
+          "metadata_locality_gate_passed": false
+        },
+        {
+          "input": "People regularly drink coffee, or they don't want to be addicted to caffeine, or both.",
+          "output": "∀x (DrinkRegularly(x, coffee)  ∨ (¬WantToBeAddictedTo(x, caffeine)))",
+          "predict_our_method": "∀x (Person(x) → (RegularlyDrinksCoffee(x) ∨ ¬WantsToBeAddictedToCaffeine(x)))",
+          "predict_baseline": "∀x (Person(x) → (RegularlyDrinksCoffee(x) ∨ ¬WantsToBeAddictedToCaffeine(x)))",
+          "metadata_phase": "phase0",
+          "metadata_is_wrong": true,
+          "metadata_n_faulty": 3,
+          "metadata_locality_gate_passed": false
+        },
+        {
+          "input": "No one who doesn't want to be addicted to caffeine is unaware that caffeine is a drug.",
+          "output": "∀x (¬WantToBeAddictedTo(x, caffeine) → ¬AwareThatDrug(x, caffeine))",
+          "predict_our_method": "¬∃x (¬WantsToBeAddictedToCaffeine(x) ∧ Unaware(x, CaffeineIsADrug))",
+          "predict_baseline": "¬∃x (¬WantsToBeAddictedToCaffeine(x) ∧ Unaware(x, CaffeineIsADrug))",
+          "metadata_phase": "phase0",
+          "metadata_is_wrong": true,
+          "metadata_n_faulty": 3,
+          "metadata_locality_gate_passed": false
+        }
+      ]
+    }
+  ]
+}

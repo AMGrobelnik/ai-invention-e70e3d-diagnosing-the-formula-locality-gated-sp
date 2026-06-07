@@ -1,0 +1,111 @@
+{
+  "metadata": {
+    "description": "FOLIO + ProofWriter + MALLS NL-FOL dataset for locality pilot",
+    "sources": {
+      "folio": "tasksource/folio (Yale-LILY/FOLIO, EMNLP 2024)",
+      "proofwriter": "tasksource/proofwriter (Allen AI, RelNeg-OWA subset)",
+      "malls": "yuan-yang/MALLS-v0 (LogicLLaMA paper, ICLR 2024)"
+    },
+    "depth_filter": ">=2 quantifiers+connectives (FOLIO, MALLS); QDep for ProofWriter",
+    "alignment_validation_count": 30,
+    "pilot_count": 1862
+  },
+  "datasets": [
+    {
+      "dataset": "folio",
+      "examples": [
+        {
+          "input": "All people who regularly drink coffee are dependent on caffeine.",
+          "output": "∀x (DrinkRegularly(x, coffee) → IsDependentOn(x, caffeine))",
+          "metadata_id": "folio_train_1126_p0",
+          "metadata_compositional_depth": 2,
+          "metadata_fold": "pilot",
+          "metadata_story_id": "406",
+          "metadata_label": "True"
+        },
+        {
+          "input": "People regularly drink coffee, or they don't want to be addicted to caffeine, or both.",
+          "output": "∀x (DrinkRegularly(x, coffee)  ∨ (¬WantToBeAddictedTo(x, caffeine)))",
+          "metadata_id": "folio_train_1126_p1",
+          "metadata_compositional_depth": 2,
+          "metadata_fold": "pilot",
+          "metadata_story_id": "406",
+          "metadata_label": "True"
+        },
+        {
+          "input": "No one who doesn't want to be addicted to caffeine is unaware that caffeine is a drug.",
+          "output": "∀x (¬WantToBeAddictedTo(x, caffeine) → ¬AwareThatDrug(x, caffeine))",
+          "metadata_id": "folio_train_1126_p2",
+          "metadata_compositional_depth": 2,
+          "metadata_fold": "pilot",
+          "metadata_story_id": "406",
+          "metadata_label": "True"
+        }
+      ]
+    },
+    {
+      "dataset": "proofwriter",
+      "examples": [
+        {
+          "input": "The bald eagle is not rough.",
+          "output": "",
+          "metadata_id": "proofwriter_test_0_s0",
+          "metadata_compositional_depth": 0,
+          "metadata_fold": "proofwriter_depth_ablation",
+          "metadata_story_id": "",
+          "metadata_label": "True"
+        },
+        {
+          "input": "If someone is rough then they chase the bald eagle.",
+          "output": "",
+          "metadata_id": "proofwriter_test_0_s1",
+          "metadata_compositional_depth": 0,
+          "metadata_fold": "proofwriter_depth_ablation",
+          "metadata_story_id": "",
+          "metadata_label": "True"
+        },
+        {
+          "input": "If someone needs the bear then they are not blue.",
+          "output": "",
+          "metadata_id": "proofwriter_test_0_s2",
+          "metadata_compositional_depth": 0,
+          "metadata_fold": "proofwriter_depth_ablation",
+          "metadata_story_id": "",
+          "metadata_label": "True"
+        }
+      ]
+    },
+    {
+      "dataset": "malls",
+      "examples": [
+        {
+          "input": "A film can be a drama, have a long runtime, and win multiple awards, or it can be a comedy, have a shorter runtime, and be a box office success.",
+          "output": "∃x (Film(x) ∧ ((Drama(x) ∧ LongRuntime(x) ∧ MultipleAwards(x)) ∨ (Comedy(x) ∧ ShorterRuntime(x) ∧ BoxOfficeSuccess(x))))",
+          "metadata_id": "malls_train_0",
+          "metadata_compositional_depth": 7,
+          "metadata_fold": "malls_supplement",
+          "metadata_story_id": "",
+          "metadata_label": ""
+        },
+        {
+          "input": "If a person is a librarian, they either work in a public library or an academic library.",
+          "output": "∀x (Person(x) ∧ Librarian(x) → WorkInPublicLibrary(x) ⊕ WorkInAcademicLibrary(x))",
+          "metadata_id": "malls_train_1",
+          "metadata_compositional_depth": 4,
+          "metadata_fold": "malls_supplement",
+          "metadata_story_id": "",
+          "metadata_label": ""
+        },
+        {
+          "input": "Healthy sleep habits improve overall well-being.",
+          "output": "∀x (HealthySleepHabits(x) → ImprovesWellBeing(x))",
+          "metadata_id": "malls_train_2",
+          "metadata_compositional_depth": 2,
+          "metadata_fold": "malls_supplement",
+          "metadata_story_id": "",
+          "metadata_label": ""
+        }
+      ]
+    }
+  ]
+}

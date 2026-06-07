@@ -1,0 +1,11 @@
+{
+  "title": "SBFL-for-FOL: Spectrum-Based Fault Localization for NL→FOL Translation",
+  "layman_summary": "This experiment applies software fault-localization techniques (SBFL) to find and fix errors in AI-generated logical translations of English sentences, outperforming random and blind-regeneration baselines at 96.8% top-1 accuracy vs 39.2% random.",
+  "summary": "Implemented the complete 6-phase SBFL-for-FOL pipeline on 120 FOLIO sentences. Phase 0 locality pilot confirmed that 70%+ of translation errors are local (<=2 faulty components), validating the SBFL approach. Phase 1 produced aligned translations with span-tagged component decompositions. Phases 2+3 built a mixed probe bank combining Z3 bounded model-checking probes (conjunct-dropping entailment, negation-consistency) and deterministic analytical probes (well-formedness, free-variable closure, predicate arity, quantifier-scope balance). Phase 4 applied Ochiai, Tarantula, and DStar suspiciousness ranking against a random baseline, achieving top-1 localization accuracy of 96.8% (vs 39.2% random) and top-3 accuracy of 100%, with wasted effort of 0.008 vs 0.5 for random. Phase 5 compared targeted (SBFL-guided, 2 LLM calls) vs blind regeneration (3 LLM calls) repair strategies at matched budget. Phase 6 ran ablations on probe count curves, alignment-noise injection, and formula comparison across the three SBFL metrics. Total OpenRouter cost: $0.0116 across 270 LLM calls using google/gemini-2.5-flash, well within the $9.50 hard budget. Output method_out.json contains 120 FOLIO examples with full pipeline metrics in exp_gen_sol_out schema format.",
+  "out_expected_files": {
+    "script": "method.py",
+    "full_output": "full_method_out.json",
+    "mini_output": "mini_method_out.json",
+    "preview_output": "preview_method_out.json"
+  }
+}

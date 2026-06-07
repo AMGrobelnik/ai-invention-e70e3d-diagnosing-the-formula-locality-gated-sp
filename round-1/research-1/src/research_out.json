@@ -1,0 +1,96 @@
+{
+  "title": "Tool Survey: FOL Provers, Structured LLM Prompting, OpenRouter Pricing, SBFL Libraries for Spectrum-Based FOL Fault Localization",
+  "summary": "Z3 (pip install z3-solver) is the recommended primary FOL bounded model checker using EnumSort for N=8 finite domains, solver.set(timeout=ms) for timeouts, and explicit sat/unsat/unknown verdicts. NLTK/Mace4 is a secondary option but requires an external binary and lacks an explicit inconclusive verdict. Code4Logic (NAACL 2025) uses Python-pseudocode basis functions for NL-to-FOL but does NOT include span tags; a custom JSON prompt template must be designed to tag each FOL component with its source sentence span. Qwen2.5-72B-Instruct on OpenRouter ($0.36/$0.40 per M tokens) is the recommended primary model with structured output via response_format type json_schema; total cost for 150 sentences is ~$0.20, well within the $10 budget. Suresoft-GLaDOS/SBFL is pip-installable and recommended for Ochiai/DStar computation; agb94/sbfl requires manual install but offers a simpler functional API. FOLIO dataset (tasksource/folio, 1204 rows) provides gold sentence-level FOL annotations with nested quantifiers and is suitable for the experiment; ProofWriter is primarily propositional and less suitable.",
+  "answer": "This survey covers four tool-selection questions for the spectrum-based FOL fault-localization experiment.\n\n**FOL Bounded Model Checking**: Z3 (`pip install z3-solver`) is recommended as the primary prover [2, 3]. Using `EnumSort` to create a finite domain of N=8 constants makes FOL checking decidable; `solver.set(timeout=5000)` sets a 5-second timeout in milliseconds [3]; and the solver returns an explicit three-way verdict: `sat` (countermodel found, entailment does not hold), `unsat` (entailment holds), or `unknown` (timeout) [2]. NLTK/Mace4 is the alternative [1]: `Mace(end_size=8).build_model(goal, assumptions)` searches for a countermodel up to domain size 8 (default is 500), returning `True` if a countermodel is found and `False` otherwise [1]. However, NLTK/Mace4 provides no explicit `unknown` verdict to distinguish timeout from proven entailment, and requires an external compiled binary that is problematic in Docker containers [1]. Z3 is fully container-friendly and has a higher-quality Python API [2, 3].\n\n**Span-Tagged FOL Generation**: Code4Logic (NAACL 2025) [4] uses Python-pseudocode-style prompting with basis functions (Predicate, Conjunction, Implication, UniversalQuantification) to generate FOL bottom-up, as confirmed from Figure 9 of the paper [4]. However, Code4Logic does NOT include span tags — components are not attributed to source sentence fragments [4]. NL2Logic [5] similarly focuses on AST-guided syntactic accuracy (99%) without span annotations [5]. The executor must therefore use a custom prompt template that wraps Code4Logic's pseudocode style with JSON output including `{id, span, code}` per component. The paper at arXiv:2511.11816 [13] confirms that modern LLMs have strong NL-FOL translation skills, supporting the feasibility of prompting for span-tagged output.\n\n**OpenRouter Pricing**: Qwen2.5-72B-Instruct costs $0.36/M input and $0.40/M output [7], with explicit JSON structured output support confirmed by the model page [7]. Llama-3.3-70B-Instruct costs $0.10/M input and $0.32/M output with a free tier of 200 req/day [6]. Total budget for 150 sentences (~2,400 input + ~1,100 output tokens per sentence) is approximately $0.20 at Qwen and $0.09 at Llama — both well within the $10 limit. The correct OpenRouter structured output parameter is `response_format: {\"type\": \"json_schema\", \"json_schema\": {\"name\": \"...\", \"strict\": true, \"schema\": {...}}}` [8]; using `json_object` instead of `json_schema` causes the model to ignore the schema [8]. Note: Gemini 2.0 Flash was shut down June 1, 2026 and must not be used [7].\n\n**SBFL Libraries**: Suresoft-GLaDOS/SBFL [10] is pip-installable via `pip install git+https://github.com/Suresoft-GLaDOS/SBFL.git` with OOP API `SBFL(formula='Ochiai').fit(X, y).ranks(method='max')`, requiring Python 3.9.1+ [10]. agb94/sbfl [9] is NOT on PyPI and requires `git clone + python setup.py install`, but offers a simpler functional API: `ochiai(X, y)` returning a scores array [9]. Both use the same matrix convention: rows = probes/tests, columns = FOL components; `X[i,j]=1` means probe i exercises component j; `y[i]=0` means probe i fails (fault-revealing) [9, 10]. A 2022 empirical study [11] found that Ochiai, Tarantula, and Barinel consistently outperform Op2 and DStar in real Python projects, supporting Ochiai as the primary formula.\n\n**Datasets**: FOLIO is available at `tasksource/folio` on HuggingFace [12] with 1,204 rows (EMNLP 2024 [13]) containing gold whole-sentence FOL annotations per premise and conclusion, including nested quantifiers (confirmed examples with forall-forall and exists-exists nesting) [12]. Gold FOL is sentence-level, not span-level — span alignment must be generated by the LLM during translation [12]. ProofWriter is available at `tasksource/proofwriter` [14] but primarily covers shallow propositional/Horn-clause logic; ProofFOL (2024) adds GPT-4o-generated FOL annotations but is not a single canonical dataset [14]. FOLIO is the recommended dataset for this experiment.",
+  "sources": [
+    {
+      "index": 1,
+      "url": "https://www.nltk.org/howto/inference.html",
+      "title": "NLTK Inference HOWTO — Prover9 and Mace4",
+      "summary": "Confirmed MaceCommand API with end_size parameter (default 500, set to 8 for bounded checking). Mace returns True (countermodel found) or False (no countermodel within end_size). No explicit inconclusive verdict distinguishing timeout from entailment."
+    },
+    {
+      "index": 2,
+      "url": "https://ericpony.github.io/z3py-tutorial/advanced-examples.htm",
+      "title": "Z3Py Tutorial — Advanced Examples (EnumSort and Quantifiers)",
+      "summary": "Confirmed EnumSort API for creating finite enumeration domains. Z3 may return unknown for cases it cannot decide; ForAll/Exists work over finite EnumSort domains for decidable bounded checking."
+    },
+    {
+      "index": 3,
+      "url": "https://cpmpy.readthedocs.io/en/simplify_nested_wsum_boolexpr/_modules/cpmpy/solvers/z3.html",
+      "title": "CPMpy Z3 Solver Source — timeout and bounded domain patterns",
+      "summary": "Confirmed solver.set(timeout=ms) pattern where timeout is integer milliseconds. Bounded domain approach via explicit variable bound constraints added to the solver."
+    },
+    {
+      "index": 4,
+      "url": "https://aclanthology.org/2025.naacl-long.547.pdf",
+      "title": "Code4Logic: Code-Style Prompting for NL-to-FOL Translation (NAACL 2025)",
+      "summary": "Confirmed Python-pseudocode prompting with basis functions (Predicate, Conjunction, Implication, UniversalQuantification, etc.) from Figure 9. No span tagging — components are built bottom-up via function calls but are not attributed to source sentence fragments. Ablation confirms comment-style instruction and basis function definitions are critical components."
+    },
+    {
+      "index": 5,
+      "url": "https://arxiv.org/abs/2602.13237",
+      "title": "NL2Logic: AST-Guided NL-to-FOL Translation (arXiv:2602.13237)",
+      "summary": "AST-guided recursive LLM parser with 99% syntactic accuracy. No explicit span-to-component annotations; focuses on syntactic correctness rather than source attribution."
+    },
+    {
+      "index": 6,
+      "url": "https://openrouter.ai/meta-llama/llama-3.3-70b-instruct",
+      "title": "OpenRouter — Llama-3.3-70B-Instruct pricing page",
+      "summary": "Confirmed current pricing: $0.10/M input tokens, $0.32/M output tokens. Free tier available."
+    },
+    {
+      "index": 7,
+      "url": "https://openrouter.ai/qwen/qwen-2.5-72b-instruct",
+      "title": "OpenRouter — Qwen2.5-72B-Instruct pricing page",
+      "summary": "Confirmed pricing: $0.36/M input, $0.40/M output. Confirmed significant improvements in structured output/JSON generation. Gemini 2.0 Flash noted as deprecated/shut down June 2026."
+    },
+    {
+      "index": 8,
+      "url": "https://openrouter.ai/docs/guides/features/structured-outputs",
+      "title": "OpenRouter Structured Outputs Documentation",
+      "summary": "Confirmed response_format parameter: type must be 'json_schema' (NOT 'json_object') for schema enforcement. Full schema structure: {name, strict:true, schema:{type, properties, required, additionalProperties:false}}. Supports streaming alongside structured output."
+    },
+    {
+      "index": 9,
+      "url": "https://github.com/agb94/sbfl",
+      "title": "agb94/sbfl — Spectrum-Based Fault Localization Package",
+      "summary": "NOT on PyPI; requires git clone + setup.py install. Functional API: ochiai(X, y), dstar(X, y), tarantula(X, y). X is coverage matrix (rows=tests, cols=elements), y is 0=fail/1=pass. Returns suspiciousness scores array."
+    },
+    {
+      "index": 10,
+      "url": "https://github.com/Suresoft-GLaDOS/SBFL",
+      "title": "Suresoft-GLaDOS/SBFL — Spectrum-based Fault Localization Engine",
+      "summary": "pip-installable via git URL. OOP API: SBFL(formula='Ochiai').fit(X,y).ranks(method='max'). Requires Python 3.9.1+. Boolean coverage matrix: rows=tests, cols=elements; y: 1=pass/0=fail."
+    },
+    {
+      "index": 11,
+      "url": "https://shaoweiwang2010.github.io/papers/EMSE2022_Evaluating_Spectrum_Based_Fault_LocalizationTechniques_in_Python_Real_World_Projects.pdf",
+      "title": "Evaluating SBFL Techniques in Python Real-World Projects (EMSE 2022)",
+      "summary": "Empirical study on real Python faults finding Ochiai, Tarantula, and Barinel consistently outperform newer techniques Op2 and DStar across multiple metrics, supporting Ochiai as primary formula."
+    },
+    {
+      "index": 12,
+      "url": "https://huggingface.co/datasets/tasksource/folio",
+      "title": "tasksource/folio — FOLIO Dataset on HuggingFace",
+      "summary": "1204 rows with gold FOL annotations. Columns: premises, premises-FOL, conclusion, conclusion-FOL, label (True/False/Uncertain). Contains nested quantifiers (forall-forall, exists-exists). Sentence-level FOL, not span-level. Updated August 2024."
+    },
+    {
+      "index": 13,
+      "url": "https://aclanthology.org/2024.emnlp-main.1229/",
+      "title": "FOLIO: Natural Language Reasoning with First-Order Logic (EMNLP 2024)",
+      "summary": "Original FOLIO paper. Confirmed dataset has parallel NL-FOL pairs verified by FOL inference engine. Multi-hop compositional sentences with nested quantifiers. 1435 examples across 487 premise sets."
+    },
+    {
+      "index": 14,
+      "url": "https://huggingface.co/datasets/tasksource/proofwriter",
+      "title": "tasksource/proofwriter — ProofWriter Dataset on HuggingFace",
+      "summary": "Available on HuggingFace. Primarily propositional/shallow Horn-clause logic with depth levels D0-D5. Less suitable than FOLIO for experiments requiring full FOL with nested quantifiers."
+    }
+  ],
+  "follow_up_questions": [
+    "Does Z3's EnumSort bounded checking correctly handle equality axioms (e.g., Unique Name Assumption) needed for FOLIO-style multi-entity problems, or must the executor add explicit distinctness constraints for each pair of domain constants?",
+    "What is the empirical span-alignment accuracy of LLMs using the custom JSON prompt template versus automated post-hoc alignment (e.g., fuzzy string matching of FOL component identifiers back to source words)?",
+    "For the SBFL coverage matrix, should analytical probes be binary (component exercised yes/no) or weighted by proof-path depth — and does Ochiai score quality degrade significantly with very sparse matrices where only 1-2 probes fail?"
+  ]
+}
