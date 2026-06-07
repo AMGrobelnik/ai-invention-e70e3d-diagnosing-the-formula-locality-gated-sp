@@ -1,0 +1,15 @@
+{
+  "kind": "code_demo",
+  "id": "gen_art_dataset_1",
+  "type": "code",
+  "iteration": 1,
+  "title": "FOLIO + ProofWriter + MALLS NL-FOL Dataset for Locality Pilot",
+  "summary": "This artifact provides a unified NL-FOL (Natural Language to First-Order Logic) dataset for the locality pilot experiment, assembled from three complementary sources:\n\n**Primary: FOLIO (tasksource/folio, Yale-LILY/FOLIO, EMNLP 2024)**\n- 1,892 examples: 1,862 pilot + 30 alignment-validation (stratified: 12 depth 2-3, 12 depth 4-5, 6 depth 6+)\n- Gold human-annotated NL-FOL pairs extracted by splitting multi-premise FOLIO stories into individual (NL sentence, FOL formula) pairs\n- All rows have non-empty gold FOL; depth-filtered to compositional_depth >= 2\n- Fields: input (NL sentence), output (FOL formula), metadata_id, metadata_compositional_depth, metadata_fold (pilot/alignment_validation), metadata_story_id, metadata_label (True/False)\n\n**Secondary: MALLS (yuan-yang/MALLS-v0, LogicLLaMA paper, ICLR 2024)**\n- 993 examples tagged malls_supplement\n- GPT-4 generated NL-FOL pairs, depth-filtered to compositional_depth >= 2 (range 2-7+)\n- Diverse real-world statements with rich logical structure\n\n**Supplementary: ProofWriter RelNeg-OWA (tasksource/proofwriter, Allen AI)**\n- 272 examples tagged proofwriter_depth_ablation\n- Relational NL sentences WITHOUT gold FOL (output field is empty string)\n- Atomic sentences useful for depth-ablation analysis; compositional_depth sourced from QDep field\n\n**Output files:**\n- `full_data_out.json`: 3,157 total examples across 3 dataset groups, schema-validated against exp_sel_data_out, 1.3MB\n- `mini_data_out.json`: 9 examples (3 per dataset)\n- `preview_data_out.json`: 9 examples with strings truncated to 200 chars\n\n**Schema**: `{metadata: {...}, datasets: [{dataset: str, examples: [{input, output, metadata_id, metadata_compositional_depth, metadata_fold, metadata_story_id, metadata_label}]}]}`\n\n**Assertions verified**: all pilot/alignment_validation rows have non-empty gold FOL; exactly 30 alignment-validation rows; file size < 50MB.\n\n**Reproducibility**: `data.py` is a self-contained uv inline script (`# /// script` header) with only `loguru` dependency; reads from `temp/datasets/` downloaded raw files; deterministic with `random.Random(42)`.",
+  "original_path": "/home/adrian/projects/ai-inventor/aii_data/users/admin/runs/run_bp-Wzi9abxjN/3_invention_loop/iter_1/gen_art/gen_art_dataset_1",
+  "demo_path": "/home/adrian/projects/ai-inventor/aii_data/users/admin/runs/run_bp-Wzi9abxjN/4_gen_paper_repo/_3_gen_art_demo/iter_1/gen_art_dataset_1",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/home/adrian/projects/ai-inventor/aii_data/users/admin/runs/run_bp-Wzi9abxjN/4_gen_paper_repo/_3_gen_art_demo/iter_1/gen_art_dataset_1/data_code_demo.ipynb"
+}
